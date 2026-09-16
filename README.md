@@ -8,7 +8,7 @@ This repository is set up to publish a read-only static site with GitHub Pages.
 
 1. Copy your site files into this repository.
 2. Make sure the public homepage is named `index.html` in the repository root.
-3. Commit and push the files to the `main` branch.
+3. Commit and push the files to the publishing branch configured in `.github/workflows/deploy-pages.yml` (currently `main`).
 4. In GitHub, enable **Pages** for this repository and use **GitHub Actions** as the source.
 
 If you want to publish from a different branch name, update `.github/workflows/deploy-pages.yml` to match that branch before pushing.
