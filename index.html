@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vector Space — Boring Edition</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="boringEdition">
+
+<div id="fullscreenGate" aria-modal="true" role="dialog">
+  <div id="gatePanel">
+    <span class="gateCorner tl" aria-hidden="true"></span>
+    <span class="gateCorner tr" aria-hidden="true"></span>
+    <span class="gateCorner bl" aria-hidden="true"></span>
+    <span class="gateCorner br" aria-hidden="true"></span>
+    <div id="gateSystem">AUTONOMOUS VECTOR LANDSCAPE</div>
+    <h1 id="gateTitle">VECTOR SPACE</h1>
+    <div id="gateSubRow"><span class="gateRule" aria-hidden="true"></span><div id="gateSub">BORING EDITION</div><span class="gateRule" aria-hidden="true"></span></div>
+    <button id="enterFullscreen" type="button"><span class="promptMark">&gt;&gt;</span><span id="enterFullscreenLabel">Enter full screen</span><span class="promptMark">&lt;&lt;</span></button>
+    <div id="boringGateControls" aria-label="Boring Edition settings">
+      <label class="boringGateControl boringCheck"><input id="boringMusic" type="checkbox" checked data-vector-ignore><span>Music</span></label>
+      <label class="boringGateControl boringColour"><span>Colour</span><input id="boringColour" type="color" value="#ff8000" data-vector-ignore aria-label="Landscape colour"></label>
+      <label class="boringGateControl boringCheck"><input id="boringWhiteStars" type="checkbox" checked data-vector-ignore><span>White stars</span></label>
+      <div class="boringVelocityRow" aria-label="Velocity range">
+        <label class="boringGateControl boringVelocity"><span>Velocity min</span><input id="boringVelocityMin" type="range" min="10" max="80" step="1" value="20" data-vector-ignore aria-label="Minimum flight velocity"><output id="boringVelocityMinValue">20</output></label>
+        <label class="boringGateControl boringVelocity"><span>Velocity max</span><input id="boringVelocityMax" type="range" min="10" max="80" step="1" value="60" data-vector-ignore aria-label="Maximum flight velocity"><output id="boringVelocityMaxValue">60</output></label>
+      </div>
+    </div>
+    <div id="boringMindControl">STEER WITH MIND CONTROL</div>
+    <div id="gateHint">Esc returns here</div>
+  </div>
+</div>
+
+<div id="optionsModal" aria-modal="true" role="dialog" aria-label="Agent X options">
+
+</div>
+
+<div id="aboutModal" aria-modal="true" role="dialog" aria-label="About Agent X">
+  <div id="aboutPanel">
+    <div id="aboutScrollHost" class="cabinetScrollHost">
+      <div id="aboutScrollBody" class="cabinetScrollBody" tabindex="0">
+        <h2>About AGENT X</h2>
+        <p>Vector cabinet space combat / contract game</p>
+
+        <h3>Fonts</h3>
+        <p class="credit">Agent X Facet — original angular vector alphabet developed from the hand-drawn Agent X lettering.</p>
+        <p class="creditDetail">Used for the Vector Space opening screen and the persistent Agent X terminal chrome: identity, operator statistics and primary navigation tabs.</p>
+        <p class="credit">Agent X Vector Sans — original single-line vector face used for the rest of the interface and in-flight lettering for clearer reading.</p>
+        <p class="creditDetail">Uses straight segments, true elliptical arcs and Bezier curves. Both faces are built into the game; no third-party font file is required.</p>
+        <p class="credit">Agent X Line Text — compact straight-segment companion face retained in the source font set.</p>
+
+        <h3>Music — calm playlist</h3>
+        <p class="credit">Erik Satie — Gymnopédie No. 1</p>
+        <p class="creditDetail">Arrangement and performance: Kevin MacLeod. From <em>Classical Sampler</em>. Licensed CC BY 3.0. <a href="https://freemusicarchive.org/music/Kevin_MacLeod/Classical_Sampler/Gymnopedie_No_1/" target="_blank" rel="noopener">Free Music Archive</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p>
+        <p class="credit">Wolfgang Amadeus Mozart — Piano Concerto No. 21 in C major, K. 467: II. Andante</p>
+        <p class="creditDetail">Performance: Markus Staab. Licensed CC BY 3.0. Source: <a href="https://musopen.org/music/2635-piano-concerto-no-21-in-c-major-k-467/" target="_blank" rel="noopener">Musopen</a>. Music promoted by <a href="https://www.chosic.com/free-music/all/" target="_blank" rel="noopener">Chosic</a>. <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p>
+        <p class="credit">Johann Pachelbel — Canon</p>
+        <p class="creditDetail">Arrangement: Frank Hudson. Performance: United States Air Force Band, Strolling Strings. Recording: United States Air Force. Track 22 from <em>The Strolling Strings 50th Anniversary</em> (2004). U.S. Air Force public-domain recording.</p>
+
+        <h3>Music — violent playlist</h3>
+        <p class="credit">Gustav Holst — Mars, the Bringer of War, from The Planets</p>
+        <p class="creditDetail">United States Air Force performance/recording. U.S. federal government public-domain recording.</p>
+        <p class="credit">Modest Mussorgsky — Night on Bald Mountain</p>
+        <p class="creditDetail">Performance: Skidmore College Orchestra. Source: Musopen. Released for public use / CC0.</p>
+        <p class="credit">Giuseppe Verdi — Messa da Requiem: Dies irae</p>
+        <p class="creditDetail">Orchestra and Chorus of the Opera House Rome; conductor Tullio Serafin; soprano Shakeh Vartenissian; mezzo-soprano Fiorenza Cossotto; tenor Eugenio Fernandi; bass Boris Christoff.</p>
+        <p class="credit">Richard Wagner — Ride of the Valkyries, from Die Walküre</p>
+        <p class="creditDetail">Performance: United States Marine Band, “The President’s Own”. U.S. federal government public-domain recording.</p>
+        <p class="creditDetail">Use of United States military band recordings does not imply endorsement by the Department of Defense, United States Air Force, United States Marine Corps, or their respective bands.</p>
+
+        <h3>Sound</h3>
+        <p class="credit">Sound effects designed with SFXR-style synthesis and rendered in-browser from project parameter sets. Spoken mission cues are project recordings.</p>
+
+        <h3>Other credits</h3>
+        <p class="todo">Additional third-party code, data or asset credits will be added here if required before release.</p>
+      </div>
+      <div id="aboutScrollbar" class="cabinetScrollbar" aria-hidden="true"><div class="cabinetScrollThumb" tabindex="-1"></div></div>
+    </div>
+    <div id="aboutFooter">
+      <label class="cabinetGlow"><span>Glow</span><input id="aboutGlow" type="range" min="0" max="100" step="1" value="20" data-vector-ignore aria-label="GPU bloom strength"><output id="aboutGlowValue">20%</output></label>
+      <button id="aboutClose" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="campaignShell" aria-label="Agent X VR station campaign interface">
+  <div id="campaignFrame">
+    <div id="campaignHeader">
+      <div id="campaignIdentity">
+        <h1>Agent X</h1>
+      </div>
+      <div id="agentStats">
+        <div class="agentStat"><b id="agentLevel">1</b><span>Operator level</span></div>
+        <div class="agentStat"><b id="agentXP">0 XP</b><span>Session experience</span></div>
+        <div class="agentStat"><b id="agentMoney">CR 12,000</b><span>Credit balance</span></div>
+        <div class="agentStat"><b id="agentDrone">AX-1</b><span>Active frame</span></div>
+      </div>
+    </div>
+    <div id="campaignTabs">
+      <button class="campaignTab active" data-tab="missions" type="button">Contracts</button>
+      <button class="campaignTab" data-tab="factions" type="button">Networks</button>
+      <button class="campaignTab mailTab" data-tab="mail" type="button">Mail <span id="mailUnreadBadge" class="mailUnreadBadge" hidden>0</span></button>
+      <button class="campaignTab" data-tab="shop" type="button">Market</button>
+      <button class="campaignTab" data-tab="workshop" type="button">Drone bay</button>
+      <button class="campaignTab" data-tab="perks" type="button">Skills</button>
+      <button id="campaignResume" class="campaignUtilityTab" type="button" style="display:none">Return to flight</button>
+      <span class="campaignTabSpacer" aria-hidden="true"></span>
+      <button class="campaignTab campaignSettingsTab" data-tab="options" type="button">Settings</button>
+      <button id="campaignDevTab" class="campaignTab campaignDevTab" data-tab="dev" type="button" hidden>DEV</button>
+    </div>
+    <div id="campaignScrollHost" class="cabinetScrollHost">
+      <div id="campaignBody" class="cabinetScrollBody" tabindex="0">
+      <section class="campaignPanel active" data-panel="missions">
+        <div id="missionBoard"></div>
+      </section>
+      <section class="campaignPanel" data-panel="factions">
+        <h2 class="panelTitle">Network map</h2>
+        <p class="panelNote">Standing is tracked per network. Contract results will later ripple between aligned and hostile groups; the relationship model already exists behind the terminal.</p>
+        <div id="factionGrid"></div>
+      </section>
+      <section class="campaignPanel" data-panel="mail">
+        <div id="mailGrid"></div>
+      </section>
+      <section class="campaignPanel" data-panel="shop">
+        <h2 class="panelTitle">Market</h2>
+        <p class="panelNote">Select stock to view full details. Purchased gear is fitted in the Drone bay.</p>
+        <div id="shopGrid"></div>
+      </section>
+      <section class="campaignPanel" data-panel="workshop">
+        <h2 class="panelTitle">Drone bay</h2>
+        <p class="panelNote workshopPrelude">PRE-LAUNCH CONFIGURATION</p>
+        <div id="workshopGrid"></div>
+      </section>
+      <section class="campaignPanel" data-panel="perks">
+        <h2 class="panelTitle">Agent X skill tree</h2>
+        <p class="panelNote">One connected progression tree branches into Mercantile, Engineering, Piloting and Combat. Deeper rows require total points invested across the tree, so strong specialisation still benefits from a few useful side-branch choices.</p>
+        <div id="perkGrid"></div>
+      </section>
+      <section id="campaignOptionsHost" class="campaignPanel" data-panel="options">
+  <div id="optionsPanel">
+    <div id="optionsScrollHost" class="cabinetScrollHost">
+      <div id="optionsScrollBody" class="cabinetScrollBody" tabindex="0">
+          <h2>Settings</h2>
+        <h3>Display</h3>
+        <label class="cabinetGlow optionsGlow"><span>Glow</span><input id="campaignGlow" type="range" min="0" max="100" step="1" value="20" data-vector-ignore aria-label="GPU bloom strength"><output id="campaignGlowValue">20%</output></label>
+        <p class="optionNote">Typography is fixed for readability. Agent X Facet is reserved for the Vector Space opening screen and the persistent terminal header/navigation shown above. Agent X Vector Sans is used everywhere else, including detailed cabinet text and in-flight lettering.</p>
+
+        <h3>Campaign</h3>
+        <p class="optionNote">Reset removes Agent X campaign progress, money, XP, reputation, equipment and purchased skills.</p>
+        <button id="campaignReset" class="dangerOption" type="button">Reset campaign</button>
+        <p class="optionNote buildInfo">Build v292</p>
+
+        <h3>Sound mixer</h3>
+        <p class="optionNote">Adjust the overall game mix. Individual sound-effect and music-track audition trims are available in the local development tab.</p>
+        <div id="mixerGrid" class="mixerGrid">
+          <div class="mixerRow" data-channel="master"><span class="mixerLabel">Master</span><button class="mixerToggle" type="button" data-mixer-toggle="master">On</button><input class="mixerSlider" type="range" min="0" max="100" step="1" data-mixer-slider="master" data-vector-ignore aria-label="Master volume"><output class="mixerValue" data-mixer-value="master">100%</output></div>
+          <div class="mixerRow" data-channel="music"><span class="mixerLabel">Music</span><button class="mixerToggle" type="button" data-mixer-toggle="music">On</button><input class="mixerSlider" type="range" min="0" max="100" step="1" data-mixer-slider="music" data-vector-ignore aria-label="Music volume"><output class="mixerValue" data-mixer-value="music">100%</output></div>
+          <div class="mixerRow" data-channel="fx"><span class="mixerLabel">Sound FX</span><button class="mixerToggle" type="button" data-mixer-toggle="fx">On</button><input class="mixerSlider" type="range" min="0" max="100" step="1" data-mixer-slider="fx" data-vector-ignore aria-label="Sound effects volume"><output class="mixerValue" data-mixer-value="fx">100%</output></div>
+          <div class="mixerRow" data-channel="speech"><span class="mixerLabel">Speech</span><button class="mixerToggle" type="button" data-mixer-toggle="speech">On</button><input class="mixerSlider" type="range" min="0" max="100" step="1" data-mixer-slider="speech" data-vector-ignore aria-label="Speech volume"><output class="mixerValue" data-mixer-value="speech">100%</output></div>
+        </div>
+
+      </div>
+      <div id="optionsScrollbar" class="cabinetScrollbar" aria-hidden="true"><div class="cabinetScrollThumb" tabindex="-1"></div></div>
+    </div>
+    <div id="optionsFooter"><button id="optionsClose" type="button">Close</button></div>
+  </div>
+      </section>
+      <section id="campaignDevPanel" class="campaignPanel campaignDevPanel" data-panel="dev" hidden>
+          <h2>Developer</h2>
+          <p class="optionNote devModeNote">Development controls. Visible only when Agent X is explicitly launched in DEV mode from VS Code.</p>
+
+          <h3>Template mission tester</h3>
+          <p class="optionNote">Generate and launch one real mission template with an explicitly selected faction. DEV template tests do not alter credits, XP, reputation, equipment or the public contract board.</p>
+          <div id="devTemplateTester" class="devTemplateTester">
+            <label><span>Template</span><select id="devTemplateSelect" data-vector-ignore aria-label="Mission template"></select></label>
+            <label><span>Faction</span><select id="devFactionSelect" data-vector-ignore aria-label="Mission faction"></select></label>
+            <label class="devCheck"><input id="devForceFollowup" type="checkbox" data-vector-ignore><span>Guarantee possible follow-up email</span></label>
+            <label class="devCheck"><input id="devMissionCheat" type="checkbox" data-vector-ignore><span>Cheat — invulnerable + one-shot lasers</span></label>
+            <div id="devContractPreview" class="devContractPreview" aria-live="polite"></div>
+            <div class="devTemplateActions"><button id="devRegenerateTemplate" type="button">Regenerate job</button><button id="devLaunchTemplate" type="button">Accept / launch preview</button></div>
+            <span id="devTemplateStatus" class="devTemplateStatus" aria-live="polite"></span>
+          </div>
+
+          <h3>Story mission emails</h3>
+          <p class="optionNote">Reset and send an authored story-mission offer through the real inbox flow for testing.</p>
+          <div class="devTemplateTester">
+            <label><span>Story mission</span><select id="storyMailCheat" data-vector-ignore aria-label="Story mission email"></select></label>
+            <div class="devTemplateActions"><button type="button" id="sendStoryMailCheat">Send offer email</button></div>
+            <span id="storyMailCheatStatus" class="devTemplateStatus" aria-live="polite">Adds the selected story offer to the VOX inbox for testing.</span>
+          </div>
+
+          <h3>Live tuning</h3>
+          <p class="optionNote">Open the existing in-flight cheat and combat-tuning workbench. The ` / ~ shortcut is also available in local development mode.</p>
+          <button id="openLiveTuning" class="devToolButton" type="button">Open cheat / live tuning panel</button>
+
+        <h3>Development missions <span class="temporaryTag">TEMPORARY</span></h3>
+        <p class="optionNote">Launch development scenarios without adding them to the public contract board.</p>
+        <div class="devMissionRow"><button id="wreckageInvestigationMission" type="button">Launch wreckage investigation</button><span>Forest route · wreckage glade · autopilot recorder approach · data recovery</span></div>
+        <div class="devMissionRow"><button id="alienSwampDeliveryMission" type="button">Launch swamp delivery test</button><span>Swamp route · relay clearing · parcel delivery</span></div>
+        <div class="devMissionRow"><button id="alienSwampConsoleMission" type="button">Launch swamp console test</button><span>Swamp route · relay clearing · terminal recalibration</span></div>
+        <div class="devMissionRow"><button id="xenoNestMission" type="button">Launch xeno nest mission</button><span>Pheromone infiltration · Hive L core · swarm frenzy · observation-zone destruction proof</span></div>
+        <div class="devMissionRow"><button id="recoveryTestMission" type="button">Launch recovery pickup test</button><span>Immediate space recovery · fixed marker · auto-align · tractor pickup</span></div>
+        <div class="devMissionRow"><button id="landGunTestMission" type="button">Launch bunker assault test</button><span>Tesla-funnelled defended plains · 3-hit bunker breach · long winding tunnel · circuitry recovery · return through same doorway · surface escape</span></div>
+        <div class="devMissionRow"><button id="orangePlanetFreeFlight" type="button">Launch orange planet free flight</button><span>Free flight · orange rocky plains · endless procedural rock field · no OSD facility or objective</span></div>
+
+        <h3>Progression sandbox <span class="temporaryTag">TEMPORARY</span></h3>
+        <p class="optionNote">Use these controls to jump around the progression while the economy, tiers and access rules are being tuned. They will be hidden for release.</p>
+        <div id="progressionSandbox"></div>
+
+        <h3>Individual sound FX</h3>
+        <p class="optionNote">Play auditions the effect through the current Master and Sound FX mixer settings.</p>
+        <div id="sfxTestGrid">
+          <span class="sfxName">Player laser</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="laser" data-vector-ignore aria-label="Player laser volume"><output class="mixerValue" data-sfx-value="laser">100%</output><button class="sfxPlay" type="button" data-sfx-play="laser">Play</button>
+          <span class="sfxName">Enemy hit</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="hit" data-vector-ignore aria-label="Enemy hit volume"><output class="mixerValue" data-sfx-value="hit">100%</output><button class="sfxPlay" type="button" data-sfx-play="hit">Play</button>
+          <span class="sfxName">Explosion</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="explosion" data-vector-ignore aria-label="Explosion volume"><output class="mixerValue" data-sfx-value="explosion">100%</output><button class="sfxPlay" type="button" data-sfx-play="explosion">Play</button>
+          <span class="sfxName">Damage taken</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="damageTaken" data-vector-ignore aria-label="Damage taken volume"><output class="mixerValue" data-sfx-value="damageTaken">100%</output><button class="sfxPlay" type="button" data-sfx-play="damageTaken">Play</button>
+          <span class="sfxName">Projectile destroyed</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="projectileDestroyed" data-vector-ignore aria-label="Projectile destroyed volume"><output class="mixerValue" data-sfx-value="projectileDestroyed">100%</output><button class="sfxPlay" type="button" data-sfx-play="projectileDestroyed">Play</button>
+          <span class="sfxName">Zoom / transition</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="zoom" data-vector-ignore aria-label="Zoom transition volume"><output class="mixerValue" data-sfx-value="zoom">45%</output><button class="sfxPlay" type="button" data-sfx-play="zoom">Play</button>
+          <span class="sfxName">Disconnect</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="disconnect" data-vector-ignore aria-label="Disconnect volume"><output class="mixerValue" data-sfx-value="disconnect">100%</output><button class="sfxPlay" type="button" data-sfx-play="disconnect">Play</button>
+          <span class="sfxName">UI click</span><input class="mixerSlider" type="range" min="0" max="100" step="1" data-sfx-slider="uiClick" data-vector-ignore aria-label="UI click volume"><output class="mixerValue" data-sfx-value="uiClick">100%</output><button class="sfxPlay" type="button" data-sfx-play="uiClick">Play</button>
+        </div>
+
+        <h3>Individual music tracks</h3>
+        <p class="optionNote">Level is a persistent per-recording trim from 0–150%. Position is only an audition control and is not saved. Press Play to suspend the normal playlist and audition that track through the current Master and Music levels.</p>
+        <div id="musicTrackMixer">
+          <div class="trackMixerHeader"><span>Track</span><span>Level</span><span></span><span>Position</span><span>Time</span><span></span></div>
+          <div class="trackGroupLabel">Calm</div>
+          <div class="trackMixerRow" data-track-row="mozart"><span class="trackName">Mozart — Piano Concerto No. 21: II. Andante</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="mozart" data-vector-ignore aria-label="Mozart track level"><output class="mixerValue" data-track-level-value="mozart">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="mozart" data-vector-ignore aria-label="Mozart track position"><output class="trackTime" data-track-time="mozart">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="mozart">Play</button></div>
+          <div class="trackMixerRow" data-track-row="pachelbel"><span class="trackName">Pachelbel — Canon</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="pachelbel" data-vector-ignore aria-label="Pachelbel track level"><output class="mixerValue" data-track-level-value="pachelbel">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="pachelbel" data-vector-ignore aria-label="Pachelbel track position"><output class="trackTime" data-track-time="pachelbel">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="pachelbel">Play</button></div>
+          <div class="trackMixerRow" data-track-row="satie"><span class="trackName">Satie — Gymnopédie No. 1</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="satie" data-vector-ignore aria-label="Satie track level"><output class="mixerValue" data-track-level-value="satie">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="satie" data-vector-ignore aria-label="Satie track position"><output class="trackTime" data-track-time="satie">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="satie">Play</button></div>
+          <div class="trackGroupLabel">Violent</div>
+          <div class="trackMixerRow" data-track-row="mars"><span class="trackName">Holst — Mars, the Bringer of War</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="mars" data-vector-ignore aria-label="Mars track level"><output class="mixerValue" data-track-level-value="mars">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="mars" data-vector-ignore aria-label="Mars track position"><output class="trackTime" data-track-time="mars">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="mars">Play</button></div>
+          <div class="trackMixerRow" data-track-row="baldmountain"><span class="trackName">Mussorgsky — Night on Bald Mountain</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="baldmountain" data-vector-ignore aria-label="Night on Bald Mountain track level"><output class="mixerValue" data-track-level-value="baldmountain">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="baldmountain" data-vector-ignore aria-label="Night on Bald Mountain track position"><output class="trackTime" data-track-time="baldmountain">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="baldmountain">Play</button></div>
+          <div class="trackMixerRow" data-track-row="diesirae"><span class="trackName">Verdi — Dies irae</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="diesirae" data-vector-ignore aria-label="Dies irae track level"><output class="mixerValue" data-track-level-value="diesirae">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="diesirae" data-vector-ignore aria-label="Dies irae track position"><output class="trackTime" data-track-time="diesirae">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="diesirae">Play</button></div>
+          <div class="trackMixerRow" data-track-row="valkyries"><span class="trackName">Wagner — Ride of the Valkyries</span><input class="mixerSlider" type="range" min="0" max="150" step="1" value="100" data-track-level="valkyries" data-vector-ignore aria-label="Valkyries track level"><output class="mixerValue" data-track-level-value="valkyries">100%</output><input class="mixerSlider trackPosition" type="range" min="0" max="1000" step="1" value="0" data-track-position="valkyries" data-vector-ignore aria-label="Valkyries track position"><output class="trackTime" data-track-time="valkyries">0:00 / --:--</output><button class="trackPlay" type="button" data-track-play="valkyries">Play</button></div>
+        </div>
+      </section>
+      <section class="campaignPanel" data-panel="debrief">
+        <div id="debriefBox"></div>
+      </section>
+      </div>
+      <div id="campaignScrollbar" class="cabinetScrollbar" aria-hidden="true"><div class="cabinetScrollThumb" tabindex="-1"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="cheats" aria-label="Cheat and tuning panel">
+  <div class="cheatHead"><h2>Cheat / live tuning</h2><div class="cheatActions"><button type="button" id="resetCombatTuning">Reset tuning</button><button type="button" id="closeCheats">Close</button></div></div>
+  <div class="cheatLayout">
+    <section class="cheatSection">
+      <h3>Mission shortcuts</h3>
+      <div class="grid">
+        <button type="button" data-jump="space">Space</button>
+        <button type="button" data-jump="approach">Planet approach</button>
+        <button type="button" data-jump="surface">Surface</button>
+        <button type="button" data-jump="forest">Forest corridor</button>
+        <button type="button" data-jump="trenchEntry">Trench entry</button>
+        <button type="button" data-jump="trench">Trench</button>
+        <button type="button" data-jump="reactorApproach">Reactor approach</button>
+        <button type="button" data-jump="reactor">Reactor</button>
+        <button type="button" id="nextStageCheat">Skip to next stage</button>
+        <button type="button" id="rain">Projectile storm</button>
+        <button type="button" id="shieldUp">Full shields</button>
+        <button type="button" id="clearBolts">Clear projectiles</button>
+        <button type="button" id="killAllShips">Kill all ships</button>
+        <label class="wide"><input id="freezeObjectives" type="checkbox"> Freeze objectives / automatic stage advance</label>
+      </div>
+    </section>
+    <section class="cheatSection">
+      <h3>Space flight</h3>
+      <label class="tuneControl"><span>Cruise speed</span><input type="range" min="10" max="60" step="1" value="45" data-tune="cruiseSpeed" data-format="units" data-vector-ignore><output>45</output></label>
+      <label class="tuneControl"><span>Max yaw rate</span><input type="range" min="60" max="220" step="5" value="125" data-tune="yawRate" data-format="degps" data-vector-ignore><output>125°/s</output></label>
+      <label class="tuneControl"><span>Max pitch rate</span><input type="range" min="40" max="140" step="5" value="65" data-tune="pitchRate" data-format="degps" data-vector-ignore><output>65°/s</output></label>
+      <label class="tuneControl"><span>Steering response</span><input type="range" min="50" max="200" step="5" value="125" data-tune="playerResponse" data-format="percent" data-vector-ignore><output>125%</output></label>
+      <label class="tuneControl"><span>Max visual bank</span><input type="range" min="0" max="25" step="1" value="9" data-tune="bankDegrees" data-format="degrees" data-vector-ignore><output>9°</output></label>
+      <label class="tuneControl"><span>Bank response</span><input type="range" min="20" max="200" step="5" value="70" data-tune="bankResponse" data-format="percent" data-vector-ignore><output>70%</output></label>
+    </section>
+    <section class="cheatSection">
+      <h3>Fighter director</h3>
+      <label class="tuneControl"><span>Enemy attack level</span><input type="range" min="1" max="10" step="1" value="5" data-tune="attackLevel" data-format="plain" data-vector-ignore><output>5</output></label>
+      <label class="tuneControl"><span>Fighter count</span><input type="range" min="1" max="8" step="1" value="5" data-tune="fighterCount" data-format="plain" data-vector-ignore><output>5</output></label>
+      <label class="tuneControl"><span>Enemy speed</span><input type="range" min="50" max="250" step="5" value="100" data-tune="enemySpeed" data-format="percent" data-vector-ignore><output>100%</output></label>
+      <label class="tuneControl"><span>Aggression</span><input type="range" min="25" max="300" step="5" value="220" data-tune="aggression" data-format="percent" data-vector-ignore><output>220%</output></label>
+      <label class="tuneControl"><span>Pass clearance</span><input type="range" min="50" max="250" step="5" value="100" data-tune="passClearance" data-format="percent" data-vector-ignore><output>100%</output></label>
+    </section>
+    <section class="cheatSection">
+      <h3>Pursuit / fly-by</h3>
+      <label class="tuneControl"><span>Escape delay</span><input type="range" min="0.50" max="5.00" step="0.10" value="2.00" data-tune="pursuitHold" data-format="seconds" data-vector-ignore><output>2.00 s</output></label>
+      <label class="tuneControl"><span>Escape boost</span><input type="range" min="120" max="450" step="5" value="320" data-tune="pursuitBoost" data-format="percent" data-vector-ignore><output>320%</output></label>
+      <label class="tuneControl"><span>Escape burst duration</span><input type="range" min="0.30" max="2.50" step="0.05" value="1.15" data-tune="pursuitBurstDuration" data-format="seconds" data-vector-ignore><output>1.15 s</output></label>
+      <label class="tuneControl"><span>Escape trigger range</span><input type="range" min="10" max="26" step="1" value="16" data-tune="pursuitBreakRange" data-format="units" data-vector-ignore><output>16</output></label>
+      <label class="tuneControl"><span>Pursuit reel (net)</span><input type="range" min="0" max="30" step="1" value="12" data-tune="pursuitReel" data-format="units" data-vector-ignore><output>12</output></label>
+      <label class="tuneControl"><span>Rear / close passes</span><input type="range" min="0" max="100" step="5" value="60" data-tune="closePassChance" data-format="percent" data-vector-ignore><output>60%</output></label>
+      <label class="tuneControl"><span>Fly-by audible range</span><input type="range" min="50" max="250" step="5" value="100" data-tune="flybyRange" data-format="percent" data-vector-ignore><output>100%</output></label>
+    </section>
+    <section class="cheatSection">
+      <h3>Enemy fire</h3>
+      <label class="tuneControl"><span>Projectile size</span><input type="range" min="50" max="400" step="5" value="250" data-tune="projectileSize" data-format="percent" data-vector-ignore><output>250%</output></label>
+      <label class="tuneControl"><span>Projectile speed</span><input type="range" min="50" max="400" step="5" value="195" data-tune="projectileSpeed" data-format="percent" data-vector-ignore><output>195%</output></label>
+      <label class="tuneControl"><span>Projectile spin</span><input type="range" min="0" max="200" step="5" value="50" data-tune="projectileSpin" data-format="percent" data-vector-ignore><output>50%</output></label>
+      <label class="tuneControl"><span>Firing range</span><input type="range" min="20" max="120" step="1" value="62" data-tune="firingRange" data-format="units" data-vector-ignore><output>62</output></label>
+      <label class="tuneControl"><span>Firing cone</span><input type="range" min="10" max="70" step="1" value="37" data-tune="firingCone" data-format="degrees" data-vector-ignore><output>37°</output></label>
+      <label class="tuneControl"><span>Accuracy</span><input type="range" min="25" max="300" step="5" value="135" data-tune="accuracy" data-format="percent" data-vector-ignore><output>135%</output></label>
+      <label class="tuneControl"><span>Fire rate</span><input type="range" min="50" max="300" step="5" value="220" data-tune="fireRate" data-format="percent" data-vector-ignore><output>220%</output></label>
+      <label class="tuneControl"><span>Burst length</span><input type="range" min="1" max="3" step="1" value="1" data-tune="burstLength" data-format="plain" data-vector-ignore><output>1</output></label>
+      <label class="tuneControl"><span>Hostile bolt cap</span><input type="range" min="1" max="12" step="1" value="6" data-tune="boltCap" data-format="plain" data-vector-ignore><output>6</output></label>
+    </section>
+    <section class="cheatSection">
+      <h3>Enemy evasion</h3>
+      <label class="tuneControl"><span>Reaction delay</span><input type="range" min="80" max="900" step="20" value="320" data-tune="evasionReactionMs" data-format="ms" data-vector-ignore><output>320 ms</output></label>
+      <label class="tuneControl"><span>Tracking threat</span><input type="range" min="0.20" max="1.80" step="0.05" value="0.60" data-tune="trackingThreatTime" data-format="seconds" data-vector-ignore><output>0.60 s</output></label>
+      <label class="tuneControl"><span>Near-miss sensitivity</span><input type="range" min="0" max="220" step="5" value="100" data-tune="nearMissSensitivity" data-format="percent" data-vector-ignore><output>100%</output></label>
+      <label class="tuneControl"><span>Hit break strength</span><input type="range" min="40" max="220" step="5" value="100" data-tune="hitBreakStrength" data-format="percent" data-vector-ignore><output>100%</output></label>
+      <label class="tuneControl"><span>Break duration</span><input type="range" min="0.55" max="2.40" step="0.05" value="1.15" data-tune="breakDuration" data-format="seconds" data-vector-ignore><output>1.15 s</output></label>
+      <label class="tuneControl"><span>Evasion cooldown</span><input type="range" min="0.50" max="4.00" step="0.05" value="1.35" data-tune="evasionCooldown" data-format="seconds" data-vector-ignore><output>1.35 s</output></label>
+      <label class="tuneControl"><span>Vertical bias</span><input type="range" min="0" max="200" step="5" value="100" data-tune="verticalBias" data-format="percent" data-vector-ignore><output>100%</output></label>
+      <label class="tuneControl"><span>Damaged agility</span><input type="range" min="40" max="130" step="5" value="78" data-tune="damagedAgility" data-format="percent" data-vector-ignore><output>78%</output></label>
+    </section>
+    <section class="cheatSection">
+      <h3>Scenery audio</h3>
+      <label class="tuneControl"><span>Tree rush volume</span><input type="range" min="0" max="40" step="1" value="23" data-tree-audio="master" data-tree-scale="100" data-format="percent" data-vector-ignore><output>23%</output></label>
+      <label class="tuneControl"><span>Tree audible range</span><input type="range" min="5" max="22" step="0.5" value="7.5" data-tree-audio="range" data-format="units1" data-vector-ignore><output>7.5</output></label>
+      <label class="tuneControl"><span>Close-pass falloff</span><input type="range" min="0.75" max="3.50" step="0.05" value="3.20" data-tree-audio="falloff" data-format="decimal2" data-vector-ignore><output>3.20</output></label>
+      <label class="tuneControl"><span>Foliage brightness</span><input type="range" min="900" max="6500" step="100" value="5200" data-tree-audio="lowpass" data-format="hz" data-vector-ignore><output>5200 Hz</output></label>
+      <label class="tuneControl"><span>Stereo width</span><input type="range" min="0" max="150" step="5" value="90" data-tree-audio="stereoWidth" data-tree-scale="100" data-format="percent" data-vector-ignore><output>90%</output></label>
+      <label class="tuneControl"><span>Leaf flutter</span><input type="range" min="0" max="30" step="1" value="0" data-tree-audio="flutterDepth" data-tree-scale="100" data-format="percent" data-vector-ignore><output>0%</output></label>
+      <button id="previewTreeRush" type="button">Preview tree rush</button>
+      <div class="hint">Filtered foliage / airflow only — no fighter-style flange or exaggerated Doppler.</div>
+    </section>
+    <section class="cheatSection">
+      <h3>Terminal hack audio</h3>
+      <label class="tuneControl"><span>Hack bleep volume</span><input type="range" min="0" max="40" step="1" value="18" data-hack-audio="volume" data-hack-scale="100" data-format="percent" data-vector-ignore><output>18%</output></label>
+      <label class="tuneControl"><span>Random pitch low</span><input type="range" min="180" max="900" step="20" value="420" data-hack-audio="minFreq" data-format="hz" data-vector-ignore><output>420 Hz</output></label>
+      <label class="tuneControl"><span>Random pitch high</span><input type="range" min="700" max="3200" step="50" value="1600" data-hack-audio="maxFreq" data-format="hz" data-vector-ignore><output>1600 Hz</output></label>
+      <label class="tuneControl"><span>Average bleep gap</span><input type="range" min="25" max="180" step="5" value="80" data-hack-audio="meanGapMs" data-format="ms" data-vector-ignore><output>80 ms</output></label>
+      <label class="tuneControl"><span>Bleep length</span><input type="range" min="35" max="140" step="5" value="78" data-hack-audio="durationMs" data-format="ms" data-vector-ignore><output>78 ms</output></label>
+      <button id="previewHackChirp" type="button">Preview hack chatter</button>
+      <div class="hint">Random chatter is deliberately non-melodic. Completion resolves to root · major 3rd · 5th · octave root.</div>
+    </section>
+    <section class="cheatSection">
+      <h3>Visual / safety</h3>
+      <label class="glowControl"><span>Glow</span><input id="glow" type="range" min="0" max="100" step="1" value="20" data-vector-ignore aria-label="GPU bloom strength"><output id="glowValue">20%</output></label>
+      <div class="safetyCheats">
+        <label><input id="vectorDepthFade" type="checkbox"> 3D mesh depth fade (A/B test)</label>
+        <label><input id="invuln" type="checkbox"> Invulnerable / no collision damage</label>
+        <label><input id="oneShotLasers" type="checkbox"> One-shot lasers</label>
+      </div>
+      <div class="hint">Tuning is live and deliberately not saved. Press ~ / ` or Close to return to the fight.</div>
+    </section>
+  </div>
+</div>
+<div id="stage">
+  <canvas id="game" tabindex="0" aria-label="Vector rail shooter"></canvas>
+  <canvas id="bloom" aria-hidden="true"></canvas>
+  <div id="message"></div>
+  <div id="abandonBox" aria-live="polite" aria-hidden="true"><div id="abandonTitle">HOLD Q TO ABANDON MISSION</div><div id="abandonHint">Release Q to cancel · drone will be recovered</div><div id="abandonProgress"><div id="abandonProgressFill"></div></div></div>
+  <div id="gearHud" aria-label="Active equipment"></div>
+</div>
+<script src="agentx-vector-font.js"></script>
+<script src="core.js"></script>
+<script src="asteroids.js"></script>
+<script src="mission-templates.js"></script>
+
+<!-- Authored data -->
+<script src="campaign-content.js"></script>
+<script src="environment-presets.js"></script>
+<script src="story-content.js"></script>
+<script src="story-wreck-assets.js"></script>
+<script src="campaign.js"></script>
+
+<!-- Shared services -->
+<script src="network-logos.js"></script>
+<script src="audio.js"></script>
+<script src="mission-transit.js"></script>
+<script src="space-transfer.js"></script>
+
+<!-- Reusable mechanics / environments -->
+<script src="engine-ui.js"></script>
+<script src="environment-fixtures.js"></script>
+<script src="environment-bunker.js"></script>
+<script src="environment-xeno-nest.js"></script>
+<script src="system-salvage.js"></script>
+<script src="system-scenario.js"></script>
+<script src="system-asteroid-wreck.js"></script>
+<script src="system-free-traders-depot.js"></script>
+<script src="system-station.js"></script>
+<script src="system-courier.js"></script>
+<script src="system-red-jackal.js"></script>
+<script src="environment-surface.js"></script>
+<script src="environment-corridor.js"></script>
+
+<!-- Core engine controllers -->
+<script src="core-world.js"></script>
+<script src="core-camera.js"></script>
+<script src="core-flight.js"></script>
+<script src="core-weapons.js"></script>
+<script src="core-mission.js"></script>
+<script src="core-renderer.js"></script>
+<script src="core-game.js"></script>
+<script src="engine.js"></script>
+
+<!-- Existing standalone systems -->
+<script src="security-checkpoint.js"></script>
+<script src="station-hack.js"></script>
+<script src="models.js"></script>
+<script src="combat.js"></script>
+<script src="runtime.js"></script>
+</body>
+</html>

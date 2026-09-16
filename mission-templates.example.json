@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "templates": [
+    {
+      "id": "station_delivery",
+      "version": 1,
+      "family": "delivery",
+      "minLevel": 1,
+      "maxLevel": null,
+      "allowedFactions": [
+        "free_traders",
+        "quickbite",
+        "red_jackal",
+        "helix"
+      ],
+      "presentation": "station_delivery",
+      "rewardProfile": "standard_delivery",
+      "cargoProfile": "general_cargo",
+      "encounterBudget": {
+        "maxMajorEncounters": 1,
+        "allowQuietRun": true
+      },
+      "sections": [
+        {
+          "type": "space_transit",
+          "encounterTable": "space_general"
+        },
+        {
+          "type": "station_approach",
+          "distance": "far",
+          "encounterTable": "station_approach"
+        },
+        {
+          "type": "station_pad",
+          "objective": {
+            "type": "deliver_cargo"
+          }
+        },
+        {
+          "type": "space_departure"
+        }
+      ]
+    },
+    {
+      "id": "xeno_nest_recovery",
+      "version": 1,
+      "family": "recovery",
+      "minLevel": 5,
+      "maxLevel": null,
+      "allowedFactions": [
+        "helix",
+        "red_jackal",
+        "orbital_security"
+      ],
+      "presentation": "xeno_nest_recovery",
+      "rewardProfile": "high_risk_recovery",
+      "encounterBudget": {
+        "maxMajorEncounters": 2,
+        "allowQuietRun": false
+      },
+      "sections": [
+        {
+          "type": "space_transit",
+          "encounterTable": "xeno_region"
+        },
+        {
+          "type": "space_combat",
+          "objective": {
+            "type": "clear_hostiles",
+            "enemySet": "xeno_outer_swarm"
+          }
+        },
+        {
+          "type": "xeno_nest",
+          "length": "long",
+          "objective": {
+            "type": "recover_object",
+            "objectProfile": "valuable_xeno_specimen"
+          },
+          "params": {
+            "forks": 2,
+            "hornets": true,
+            "larvaGuns": true
+          }
+        },
+        {
+          "type": "xeno_nest",
+          "direction": "escape",
+          "length": "medium",
+          "objective": {
+            "type": "reach_exit"
+          },
+          "params": {
+            "aggression": "high"
+          }
+        },
+        {
+          "type": "space_departure"
+        }
+      ]
+    }
+  ],
+  "encounterTables": [
+    {
+      "id": "station_approach",
+      "entries": [
+        {
+          "encounter": "none",
+          "weight": 50
+        },
+        {
+          "encounter": "pirate_blockade",
+          "weight": 18
+        },
+        {
+          "encounter": "rogue_drones",
+          "weight": 12
+        },
+        {
+          "encounter": "xeno_swarm",
+          "weight": 12
+        },
+        {
+          "encounter": "debris_hazard",
+          "weight": 8
+        }
+      ]
+    }
+  ],
+  "presentationPacks": [
+    {
+      "presentationId": "station_delivery",
+      "faction": "free_traders",
+      "board": {
+        "titles": [
+          "Relay Consignment",
+          "Priority Freight",
+          "Contract Delivery"
+        ],
+        "descriptions": [
+          "Deliver {cargo} to {destination}. Standard handling terms apply.",
+          "Carry a sealed freight consignment from {origin} to {destination}."
+        ]
+      },
+      "routineComplete": {
+        "subjects": [
+          "CONSIGNMENT DELIVERED"
+        ],
+        "bodies": [
+          "Delivery confirmed at {destination}. Payment of {credits} credits has been released."
+        ]
+      },
+      "personalFollowUps": [
+        {
+          "trigger": "major_encounter",
+          "chance": 0.55,
+          "contact": "corvella_pallis",
+          "subjects": [
+            "THAT APPROACH"
+          ],
+          "bodies": [
+            "Babe, I saw the approach report. You still got the parcel onto the pad. That's fronking lovely work. I've added something extra."
+          ]
+        }
+      ]
+    },
+    {
+      "presentationId": "station_delivery",
+      "faction": "quickbite",
+      "board": {
+        "titles": [
+          "Priority Order",
+          "Hot Run",
+          "Relay Delivery"
+        ],
+        "descriptions": [
+          "Get {cargo} to {destination}. Customer has already paid.",
+          "Take the order to {destination}. Yes, it is still supposed to be hot."
+        ]
+      },
+      "routineComplete": {
+        "subjects": [
+          "ORDER DELIVERED"
+        ],
+        "bodies": [
+          "Order accepted at {destination}. Payment of {credits} credits released."
+        ]
+      },
+      "personalFollowUps": [
+        {
+          "trigger": "major_encounter",
+          "chance": 0.55,
+          "contact": "nyxo_malloc",
+          "subjects": [
+            "DUDE"
+          ],
+          "bodies": [
+            "Dude. Xenos on the approach and you still got the order there. Awesome."
+          ]
+        }
+      ]
+    },
+    {
+      "presentationId": "xeno_nest_recovery",
+      "faction": "helix",
+      "board": {
+        "titles": [
+          "Xeno Specimen Recovery",
+          "Biological Field Recovery"
+        ],
+        "descriptions": [
+          "Enter the marked nest and retrieve {target} from the designated chamber.",
+          "Recover the marked xeno specimen. Preserve container integrity."
+        ]
+      },
+      "routineComplete": {
+        "subjects": [
+          "SPECIMEN RECEIVED"
+        ],
+        "bodies": [
+          "Recovered specimen logged. Payment of {credits} credits released."
+        ]
+      },
+      "personalFollowUps": [
+        {
+          "trigger": "valuable_recovery",
+          "chance": 0.65,
+          "contact": "navira_derris",
+          "subjects": [
+            "SPECIMEN"
+          ],
+          "bodies": [
+            "Specimen integrity is exceptional. Please do not ask what it is worth."
+          ]
+        }
+      ]
+    },
+    {
+      "presentationId": "xeno_nest_recovery",
+      "faction": "red_jackal",
+      "board": {
+        "titles": [
+          "Treasure in the Hive",
+          "Private Recovery"
+        ],
+        "descriptions": [
+          "Something of ours has found its way into a xeno nest. The xenos have no title to it. Retrieve it."
+        ]
+      },
+      "routineComplete": {
+        "subjects": [
+          "PROPERTY RECOVERED"
+        ],
+        "bodies": [
+          "Recovered property has been received. Agreed payment of {credits} credits released."
+        ]
+      },
+      "personalFollowUps": [
+        {
+          "trigger": "valuable_recovery",
+          "chance": 0.65,
+          "contact": "cassian_erivan_snade",
+          "subjects": [
+            "ORPHEUS"
+          ],
+          "bodies": [
+            "Orpheus descended for Eurydice. You descended for a box. Happily, the box was considerably more valuable."
+          ]
+        }
+      ]
+    }
+  ]
+}
